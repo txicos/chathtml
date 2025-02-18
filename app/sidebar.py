@@ -74,7 +74,8 @@ def sidebar(key, llm_model, lang):
         global gxt
         gxt = localizator.gettext
         #st.rerun()
-      except:
+      except Exception as e:
+          logging.error(f"Error locating language: {e}")
           pass
   
       open_api_key_input = key.get_open_api_key()
