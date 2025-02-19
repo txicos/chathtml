@@ -1,4 +1,4 @@
-from os import getenv
+from os import getenv, path
 import requests
 import gettext
 import logging
@@ -69,7 +69,10 @@ def sidebar(key, llm_model, lang):
 
       try:
         logging.debug(language)
-        localizator = gettext.translation('chathtml', localedir='locale', languages=[language])
+        dirname = path.dirname(path.realpath(__file__))
+        dirlocale = path.join(dirname,"locale")
+        logging.info(f"dir locale {dirlocale}")
+        localizator = gettext.translation('chathtml', localedir=dirlocale, languages=[language])
         localizator.install()
         global gxt
         gxt = localizator.gettext
