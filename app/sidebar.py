@@ -85,10 +85,14 @@ def sidebar(key, llm_model, lang):
       
       selected_model = None
       model_provider =  None
-      
+      host = getenv('OLLAMA_HOST')
+      if host:
+        model_list = ["OpenAI", "Ollama"]
+      else:
+        model_list = ["OpenAI"]      
       model_provider = st.selectbox(
           gxt("ai_provider"), #Select your preferred model provider:
-          ["OpenAI", "Ollama"],
+          model_list,
           key="model_provider",
           help=gxt("help_select_model") #"Select the model provider you would like to use. This will determine the models available for selection.",
       )
