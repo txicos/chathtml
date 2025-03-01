@@ -1,4 +1,5 @@
-#import requests
+import streamlit as st
+
 import logging
 from bs4 import BeautifulSoup
 from readabilipy import simple_json_from_html_string
@@ -13,7 +14,6 @@ import numpy as np
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
-import streamlit as st
 
 
 from time import sleep
