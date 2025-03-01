@@ -14,7 +14,7 @@ import numpy as np
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.firefox.service import Service
-
+from webdriver_manager.firefox import GeckoDriverManager
 
 from time import sleep
 
@@ -28,7 +28,8 @@ def get_text_from_url(url):
     options.add_argument("--headless")
     # add any other options you need here
 
-    service = Service(executable_path=r'/usr/local/bin/geckodriver')
+    #service = Service(executable_path=r'/usr/local/bin/geckodriver')
+    service = Service(GeckoDriverManager().install())
     driver = webdriver.Firefox(service=service, options=options)
 
     try:
